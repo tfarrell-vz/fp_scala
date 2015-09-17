@@ -16,6 +16,11 @@ object List {
     case Cons(x, xs) => x * product(xs)
   }
 
+  def identity[A](lst: List[A]): List[A] = lst match {
+    case Nil => Nil
+    case Cons(x, xs) => Cons(x, xs)
+  }
+
   def tail[A](lst: List[A]): List[A] = lst match {
     case Nil => Nil
     case Cons(x, xs) => xs
