@@ -45,6 +45,13 @@ object List {
     case n => drop(tail(l), n-1)
   }
 
+  def dropWhile[A](lst: List[A], f: A => Boolean): List[A] = lst match {
+    case Nil => Nil
+    case Cons(x, xs) =>
+      if (f(x)) { dropWhile(xs, f) }
+      else { Cons(x, dropWhile(xs, f)) }
+  }
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
