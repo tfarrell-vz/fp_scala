@@ -64,6 +64,13 @@ object List {
     case _ => Nil
   }
 
+  def dropWhileInfer[A](as: List[A])(f: A => Boolean): List[A] =
+    as match {
+      case Cons(h, t) if f(h) => dropWhileInfer(t)(f)
+      case Cons(h, t) if !f(h) => Cons(h, dropWhileInfer(t)(f))
+      case _ => as
+  }
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
