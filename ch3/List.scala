@@ -16,6 +16,11 @@ object List {
     case Cons(x, xs) => x * product(xs)
   }
 
+  def combine[A](lst: List[A])(f: (A, A) => A, term: A): A = lst match {
+    case Nil => term
+    case Cons(h, t) => f(h, combine(t)(f, term))
+  }
+
   def identity[A](lst: List[A]): List[A] = lst match {
     case Nil => Nil
     case Cons(x, xs) => Cons(x, xs)
