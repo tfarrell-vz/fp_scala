@@ -52,6 +52,18 @@ object List {
       else { Cons(x, dropWhile(xs, f)) }
   }
 
+  def append[A](a1: List[A], a2: List[A]): List[A] =
+    a1 match {
+      case Nil => a2
+      case Cons(h,t) => Cons(h, append(t, a2))
+    }
+
+  def init[A](lst: List[A]): List[A] = lst match {
+    case Cons(term, Nil) => Nil // Excise the terminal node.
+    case Cons(h, t) => Cons(h, init(t))
+    case _ => Nil
+  }
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
