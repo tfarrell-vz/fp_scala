@@ -82,6 +82,14 @@ object List {
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
     }
 
+  def foldRightShort[A,B](as: List[A], z: B, short: A)(f: (A,B) => B): B =
+    as match {
+      case Nil => z
+      case Cons(short, Nil) => z
+      case Cons(x, xs) if x == short =>f(short, foldRightShort(Cons(short, Nil), z, short)(f))
+      case Cons(x, xs) => f(x, foldRightShort(xs, z, short)(f))
+    }
+
   def sum2(ns: List[Int]) =
     foldRight(ns, 0)((x,y) => x + y)
 
