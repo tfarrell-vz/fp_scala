@@ -100,6 +100,14 @@ object List {
     foldRight(as, 0)((x,y) => 1 + y)
   }
 
+  def foldLeft[A, B](as: List[A], z: B)(f: (A,B) => B): B = {
+    def loop(lst: List[A], acc: B): B = {
+      if (lst == Nil) acc
+      else loop(tail(lst), f(head(lst), acc))
+    }
+    loop(tail(as), f(head(as), z))
+  }
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
