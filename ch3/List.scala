@@ -109,6 +109,12 @@ object List {
     loop(tail(as), f(head(as), z))
   }
 
+  def sum3(ns: List[Int]) =
+    foldLeft(ns, 0)(_ + _)
+
+  def product3(ns: List[Double]) =
+    foldLeft(ns, 1.0)(_ * _)
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
