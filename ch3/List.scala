@@ -115,6 +115,9 @@ object List {
   def product3(ns: List[Double]) =
     foldLeft(ns, 1.0)(_ * _)
 
+  def length2[A](lst: List[A]): Int =
+    foldLeft(lst, 0)((x,y) => 1 + y)
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
