@@ -1,5 +1,7 @@
 package fpinscala.datastructures
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -101,6 +103,7 @@ object List {
   }
 
   def foldLeft[A, B](as: List[A], z: B)(f: (A,B) => B): B = {
+    @annotation.tailrec
     def loop(lst: List[A], acc: B): B = {
       if (lst == Nil) acc
       else loop(tail(lst), f(head(lst), acc))
