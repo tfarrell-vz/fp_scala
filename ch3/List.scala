@@ -121,6 +121,9 @@ object List {
   def plusOne(lst: List[Int]): List[Int] =
     foldRight(lst, Nil:List[Int])((x,y)=>Cons(x+1,y))
 
+  def dubStr(lst: List[Double]): List[String] =
+    foldRight(lst, Nil:List[String])((x,y)=>Cons(x.toString, y))
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
