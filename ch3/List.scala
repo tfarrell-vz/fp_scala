@@ -124,6 +124,9 @@ object List {
   def dubStr(lst: List[Double]): List[String] =
     foldRight(lst, Nil:List[String])((x,y)=>Cons(x.toString, y))
 
+  def map[A,B](as: List[A])(f: A => B): List[B] =
+    foldRight(as, Nil:List[B])((x,y)=> Cons(f(x), y))
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
