@@ -127,6 +127,9 @@ object List {
   def map[A,B](as: List[A])(f: A => B): List[B] =
     foldRight(as, Nil:List[B])((x,y)=> Cons(f(x), y))
 
+  def append2[A](lst: List[A], a2: List[A]): List[A] =
+    foldRight(lst, a2)((x, y)=>Cons(x,y))
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
