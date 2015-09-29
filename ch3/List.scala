@@ -130,6 +130,9 @@ object List {
   def append2[A](lst: List[A], a2: List[A]): List[A] =
     foldRight(lst, a2)((x, y)=>Cons(x,y))
 
+  def reverse[A](lst: List[A]):List[A] =
+    foldLeft(lst, Nil:List[A])((x,y) => Cons(x,y))
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
