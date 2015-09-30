@@ -133,6 +133,13 @@ object List {
   def reverse[A](lst: List[A]):List[A] =
     foldLeft(lst, Nil:List[A])((x,y) => Cons(x,y))
 
+  def filter[A](lst: List[A])(f: A => Boolean): List[A] = lst match {
+    case Nil => Nil
+    case Cons(x, xs) =>
+      if (!f(x)) { filter(xs)(f) }
+      else { Cons(x, filter(xs)(f)) }
+  }
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
