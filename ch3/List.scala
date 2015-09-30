@@ -140,10 +140,13 @@ object List {
       else { Cons(x, filter(xs)(f)) }
   }
 
-  def transformAppend[A, B](a: A, bs: List[B])(f: A => B) = {
-    val as = Cons(f(a), Nil)
+  def transformAppend[A, B](a: A, bs: List[B])(f: A => List[B]): List[B] = {
+    val as = f(a)
     append(as, bs)
   }
+
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
+    foldRight(as, Nil: List[B])((x, y) => transformAppend(x, y)(f))
 
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
