@@ -140,6 +140,11 @@ object List {
       else { Cons(x, filter(xs)(f)) }
   }
 
+  def transformAppend[A, B](a: A, bs: List[B])(f: A => B) = {
+    val as = Cons(f(a), Nil)
+    append(as, bs)
+  }
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
