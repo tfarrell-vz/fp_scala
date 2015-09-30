@@ -148,6 +148,9 @@ object List {
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
     foldRight(as, Nil: List[B])((x, y) => transformAppend(x, y)(f))
 
+  def filter2[A](lst: List[A])(f: A => Boolean): List[A] =
+    flatMap(lst)(x => { if (f(x)) List(x) else Nil: List[A]})
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
