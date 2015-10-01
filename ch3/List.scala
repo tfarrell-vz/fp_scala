@@ -151,6 +151,18 @@ object List {
   def filter2[A](lst: List[A])(f: A => Boolean): List[A] =
     flatMap(lst)(x => { if (f(x)) List(x) else Nil: List[A]})
 
+  def addTwo[Int](a1: List[Int], a2: List[Int]): List[Int] = {
+    def loop(lst1: List[Int], lst2: List[Int], acc:List[Int]):List[Int] = {
+      if (lst1 == Nil) reverse(acc)
+      else if (lst2 == Nil) reverse(acc)
+      else {
+        // Why is it broken
+      }
+    }
+    loop(a1, a2, Nil:List[Int])
+  }
+
+
   def apply[A](as: A*): List[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
