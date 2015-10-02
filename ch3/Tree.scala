@@ -8,9 +8,10 @@ object Tree {
     case Branch(left, right) => 1 + size(left) + size(right)
   }
 
-  /*def maximum(tree: Tree[Int]): Int = tree match {
-    // TO-DO
-  }*/
+  def maximum(tree: Tree[Int]): Int = tree match {
+    case Leaf(x) => x
+    case Branch(left, right) => maximum(left) max maximum(right)
+  }
 
   def maxTerminalBranch(tree: Tree[Int]): Int = tree match {
     case Branch(left: Leaf[Int], right: Leaf[Int]) => left.value.max(right.value)
