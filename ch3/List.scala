@@ -141,8 +141,7 @@ object List {
   }
 
   def transformAppend[A, B](a: A, bs: List[B])(f: A => List[B]): List[B] = {
-    val as = f(a)
-    append(as, bs)
+    append(f(a), bs)
   }
 
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
