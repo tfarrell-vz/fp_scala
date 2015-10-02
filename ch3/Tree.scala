@@ -7,4 +7,12 @@ object Tree {
     case Leaf(a) => 1
     case Branch(left, right) => 1 + size(left) + size(right)
   }
+
+  /*def maximum(tree: Tree[Int]): Int = tree match {
+    // TO-DO
+  }*/
+
+  def maxTerminalBranch(tree: Tree[Int]): Int = tree match {
+    case Branch(left: Leaf[Int], right: Leaf[Int]) => left.value.max(right.value)
+  }
 }
