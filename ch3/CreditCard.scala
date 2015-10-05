@@ -24,6 +24,9 @@ def toDigits(num: Int): List[Int] = {
 
 def toRevDigits(nums: List[Int]):List[Int] = nums.reverse
 
+/**
+ * Exercise 3
+ */
 def doubleEveryOther(nums:List[Int]):List[Int] = {
   val len = nums.length
 
@@ -50,3 +53,8 @@ def numDigits(num: Int): Int = {
   }
   loop(num, 0)
 }
+
+/**
+  * Exercise 4
+  */
+// def sumDigits(digits: List[Int]): Int
