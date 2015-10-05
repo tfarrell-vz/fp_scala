@@ -13,3 +13,11 @@ def dropLastDigit(num: Int): Int = num / 10
   * Exercise 2
   */
 
+def toDigits(num: Int): List[Int] = {
+  def loop(num: Int, acc: List[Int]):List[Int] = {
+    if (num == 0) acc
+    else if (num < 0) List[Int]()
+    else loop(dropLastDigit(num), lastDigit(num)::acc)
+  }
+  loop(num, List[Int]())
+}
