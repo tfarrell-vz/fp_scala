@@ -42,11 +42,14 @@ def doubleEveryOther(nums:List[Int]):List[Int] = {
 }
 
 def numDigits(num: Int): Int = {
-  def loop(i: Int, acc: Int): Int = {
-    if (i == 0) acc
-    else {
-      loop(i/10, acc + 1)
+  if (num == 0) 1
+  else {
+    def loop(i: Int, acc: Int): Int = {
+      if (i == 0) acc
+      else {
+        loop(i/10, acc + 1)
+      }
     }
+    loop(num, 0)
   }
-  loop(num, 0)
 }
