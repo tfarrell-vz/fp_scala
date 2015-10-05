@@ -21,3 +21,6 @@ def toDigits(num: Int): List[Int] = {
   }
   loop(num, List[Int]())
 }
+
+def toRevDigits(nums: List[Int]):List[Int] = nums.reverse
+
