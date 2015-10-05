@@ -24,3 +24,19 @@ def toDigits(num: Int): List[Int] = {
 
 def toRevDigits(nums: List[Int]):List[Int] = nums.reverse
 
+def doubleEveryOther(nums:List[Int]):List[Int] = {
+  val len = nums.length
+
+  def loop(index: Int, con: List[Int], acc: List[Int]):List[Int] = {
+    if (index > len) acc.reverse
+    else {
+      if (index % 2 == 0) {
+        loop(index+1, con.tail, (2 * con.head)::acc)
+      }
+      else {
+        loop(index+1, con.tail, con.head::acc)
+      }
+    }
+  }
+  loop(1, nums, List[Int]())
+}
