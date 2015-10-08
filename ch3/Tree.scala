@@ -23,4 +23,12 @@ object Tree {
       case Branch(left, right) => Branch(cloneTree(left), cloneTree(right))
     }
   }
+
+  def map[A, B](treeIn: Tree[A])(f: A => B):Tree[B] = {
+    treeIn match {
+      case Leaf(x) => Leaf(f(x))
+      case Branch(left, right) => Branch(map(left)(f), map(right)(f))
+    }
+  }
+
 }
