@@ -16,4 +16,11 @@ object Tree {
   def maxTerminalBranch(tree: Tree[Int]): Int = tree match {
     case Branch(left: Leaf[Int], right: Leaf[Int]) => left.value.max(right.value)
   }
+
+  def cloneTree[Int](treeIn: Tree[Int]):Tree[Int] = {
+    treeIn match {
+      case Leaf(x) => Leaf(x)
+      case Branch(left, right) => Branch(cloneTree(left), cloneTree(right))
+    }
+  }
 }
