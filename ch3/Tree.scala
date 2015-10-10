@@ -17,6 +17,11 @@ object Tree {
     case Branch(left: Leaf[Int], right: Leaf[Int]) => left.value.max(right.value)
   }
 
+  def depth[A](tree: Tree[A]): Int = tree match {
+    case Leaf(x) => 1
+    case Branch(left, right) => (1 + depth(left)).max(1+ depth(right))
+  }
+
   def cloneTree[Int](treeIn: Tree[Int]):Tree[Int] = {
     treeIn match {
       case Leaf(x) => Leaf(x)
