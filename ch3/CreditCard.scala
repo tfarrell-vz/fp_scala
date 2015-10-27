@@ -57,4 +57,12 @@ def numDigits(num: Int): Int = {
 /**
   * Exercise 4
   */
+
+def sumDigit(n: Int): Int = {
+  def loop(i: Int, acc: Int): Int = {
+    if (i == 0) acc
+    else loop(i / 10, acc + i % 10)
+  }
+  loop(n, 0)
+}
 // def sumDigits(digits: List[Int]): Int
