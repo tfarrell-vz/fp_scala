@@ -70,3 +70,11 @@ def sumDigits(digits: List[Int]): Int = digits match {
   case Nil => 0
   case x :: xs => sumDigit(x) + sumDigits(xs)
 }
+
+def sumDigits2(digits: List[Int]): Int = {
+  def loop(lst: List[Int], acc: Int): Int = {
+    if (lst.isEmpty) acc
+    else loop(lst.tail, acc + sumDigit(lst.head))
+  }
+  loop(digits, 0)
+}
