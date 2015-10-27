@@ -5,16 +5,17 @@
 /**
  * Exercise 1
  */
+object main extends App {
 
-def lastDigit(num: Int): Int = num % 10
-def dropLastDigit(num: Int): Int = num / 10
+def lastDigit(num: Long): Int = (num % 10).toInt
+def dropLastDigit(num: Long): Int = (num / 10).toInt
 
 /**
   * Exercise 2
   */
 
-def toDigits(num: Int): List[Int] = {
-  def loop(num: Int, acc: List[Int]):List[Int] = {
+def toDigits(num: Long): List[Int] = {
+  def loop(num: Long, acc: List[Int]):List[Int] = {
     if (num == 0) acc
     else if (num < 0) List[Int]()
     else loop(dropLastDigit(num), lastDigit(num)::acc)
@@ -77,4 +78,18 @@ def sumDigits2(digits: List[Int]): Int = {
     else loop(lst.tail, acc + sumDigit(lst.head))
   }
   loop(digits, 0)
+}
+
+/**
+  * Exercise 5
+  */
+
+def luhn(creditCardNum: Long): Boolean = {
+  val ccDigitsReversed = toDigits(creditCardNum).reverse
+  val doubledEveryOther = doubleEveryOther(ccDigitsReversed)
+  sumDigits(doubledEveryOther) % 10 == 0
+}
+
+  val cc1: Long = 5594589764218858L
+  println(toDigits(cc1))
 }
