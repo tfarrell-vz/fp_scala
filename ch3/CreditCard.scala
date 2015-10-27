@@ -65,4 +65,8 @@ def sumDigit(n: Int): Int = {
   }
   loop(n, 0)
 }
-// def sumDigits(digits: List[Int]): Int
+
+def sumDigits(digits: List[Int]): Int = digits match {
+  case Nil => 0
+  case x :: xs => sumDigit(x) + sumDigits(xs)
+}
