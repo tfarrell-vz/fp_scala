@@ -5,10 +5,10 @@
 /**
  * Exercise 1
  */
-object main extends App {
+object CreditCard extends App {
 
 def lastDigit(num: Long): Int = (num % 10).toInt
-def dropLastDigit(num: Long): Int = (num / 10).toInt
+def dropLastDigit(num: Long): Long = num / 10
 
 /**
   * Exercise 2
@@ -91,5 +91,7 @@ def luhn(creditCardNum: Long): Boolean = {
 }
 
   val cc1: Long = 5594589764218858L
-  println(toDigits(cc1))
+  println(cc1)
+  println("Is it a valid credit card?")
+  println(luhn(cc1))
 }
