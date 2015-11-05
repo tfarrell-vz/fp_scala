@@ -25,7 +25,6 @@ sealed trait Option[+A] {
 
   /*
   def orElse[B >: A](ob: => Option[B]): Option[B]
-  def filter(f: A => Boolean): Option[A]
   */
 }
 
