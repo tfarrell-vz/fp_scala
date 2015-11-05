@@ -42,9 +42,18 @@ object options {
 }
 
 object tester {
-  def run() = {
+  def test_map() = {
     val f = (x: Int) => x.toDouble + 2.0
     val opt = Some(1)
     opt.map(f)
+  }
+
+  def test_filter() = {
+    val f = (x: Int) => x % 2 == 0
+    val opt1 = Some(1)
+    val opt2 = Some(2)
+
+    println(opt1.filter(f) == None)
+    println(opt2.filter(f) == Some(2))
   }
 }
