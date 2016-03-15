@@ -3,6 +3,8 @@ trait Stream[+A] {
     case Empty => None
     case Cons(h, t) => Some(h())
   }
+
+  def toList: List[A] = sys.error("to do")
 }
 
 case object Empty extends Stream[Nothing]
