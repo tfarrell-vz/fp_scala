@@ -4,7 +4,16 @@ trait Stream[+A] {
     case Cons(h, t) => Some(h())
   }
 
-  def toList: List[A] = sys.error("to do")
+  def toList: List[A] = {
+    def loop(str: Stream[A], acc: List[A]): List[A] = {
+      str match {
+        case Empty => acc
+        case Cons(h, t) => loop(t(), acc.::(h()))
+      }
+    }
+    val lst = loop(this, List())
+    lst.reverse
+  }
 }
 
 case object Empty extends Stream[Nothing]
